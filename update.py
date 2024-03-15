@@ -43,10 +43,11 @@ def get_saved_user_agents():
 def get_latest_user_agents():
     user_agents = []
     base_url = 'https://www.whatismybrowser.com/guides/the-latest-user-agent/'
-
+    session = requests.Session()
+    session.get('https://www.whatismybrowser.com')
     for browser in ('chrome', 'firefox', 'safari', 'edge'):
         time.sleep(1)
-        response = requests.get(
+        response = session.get(
             ''.join((base_url, browser)),
             headers={'User-Agent': get_saved_user_agents()[-1]},
         )
