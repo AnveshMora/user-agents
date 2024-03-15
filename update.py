@@ -48,7 +48,7 @@ def get_latest_user_agents():
         time.sleep(1)
         response = requests.get(
             ''.join((base_url, browser)),
-            headers={'User-Agent': random.choice(get_saved_user_agents())},
+            headers={'User-Agent': get_saved_user_agents()[-1]},
         )
         if response.status_code >= 400:
             print(response.text)
